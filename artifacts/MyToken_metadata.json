@@ -332,11 +332,11 @@
 	},
 	"sources": {
 		"task2/MyToken.sol": {
-			"keccak256": "0x9023b1c3a8cd08ea8c3c4787e145a78f630c0cee2f2b4e006fd9af2ac477dc50",
+			"keccak256": "0xcf8de5b277ec2242e13b6f56b9f2db67b86cd38f1deb5cc278a3c8fba33e20ea",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9c789c4d7f96032e6ee3d11fd526cb21ef379e3eebe096ac6620a3a9c3e302b8",
-				"dweb:/ipfs/QmbF6oZ1cvn79vHTBkj1C5Gzmz5gpHLC84fMNKQPDbmRUA"
+				"bzz-raw://312a39b65350613e1a89e70fa18b88ac97c4fe67a90074069b5677ff3f711587",
+				"dweb:/ipfs/QmaChk3v1PXZe7CynTuFqHk1nACf2WXs4j4wR5RBryTxNc"
 			]
 		}
 	},

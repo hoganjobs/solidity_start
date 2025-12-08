@@ -85,7 +85,7 @@ contract MyToken {
         require(balanceOf[from] >= value, "Insufficient balance");
         require(allowance[from][msg.sender] >= value, "Insufficient allowance");
 
-        balanceOf[msg.sender] -= value;
+        balanceOf[from] -= value;
         balanceOf[to] += value;
 
         allowance[from][msg.sender] -= value;

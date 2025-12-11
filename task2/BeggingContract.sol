@@ -45,9 +45,15 @@ contract BeggingContract {
     uint256 public totalDonations;
 
     address public owner;
+    uint256 public deadline;
 
     event Donation(address indexed from, uint256 value);
     event Withdrawal(address indexed from, uint256 value);
+    event UpateDuration(
+        address indexed from,
+        uint256 duration,
+        uint256 deadline
+    );
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only owner can call");
@@ -56,10 +62,13 @@ contract BeggingContract {
 
     constructor() {
         owner = msg.sender;
+        deadline = block.timestamp + (60 * 24 * 30 * 1 minutes);
     }
 
     // 用户向合约发送以太币，并记录捐赠信息
     function donate() public payable returns (bool) {
+        require(block.timestamp <= deadline, "Donation period has ended");
+        require(msg.value > 0, "Zero Value");
         donations[msg.sender] += msg.value;
         totalDonations += msg.value;
 
@@ -80,5 +89,16 @@ contract BeggingContract {
     // 查询某个地址的捐赠金额
     function getDonation(address donator) public view returns (uint256) {
         return donations[donator];
+    }
+
+    // 设置时间段
+    function setDuration(uint durationMins) public onlyOwner {
+        require(
+            durationMins > 1 && durationMins <= 60 * 24 * 30,
+            "Invalid duration"
+        );
+        deadline = block.timestamp + (durationMins * 1 minutes);
+
+        emit UpateDuration(msg.sender, durationMins, deadline);
     }
 }
